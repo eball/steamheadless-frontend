@@ -1147,6 +1147,9 @@ const UI = {
 
         let audio_url;
         let host = window.location.hostname; 
+        if (jsonConfig.DOMAIN_AUDIO_WEBSOCKET && jsonConfig.DOMAIN_AUDIO_WEBSOCKET !== ""){
+            host = jsonConfig.DOMAIN_AUDIO_WEBSOCKET;
+        }
         let port = jsonConfig.PORT_AUDIO_WEBSOCKET;
         if (window.location.protocol === "https:") {
             audio_url = 'wss';

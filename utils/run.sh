@@ -113,7 +113,9 @@ fi
 # Configure random ports for VNC service, pulseaudio socket, noVNC service and audio transport websocket
 # Note: Ports 32035-32248 are unallocated port ranges. We should be able to find something in here that we can use
 #   REF: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&page=130
-PORT_AUDIO_WEBSOCKET=$(get_next_unused_port 32040)
+if [[ -z ${PORT_AUDIO_WEBSOCKET} ]]; then
+    PORT_AUDIO_WEBSOCKET=$(get_next_unused_port 32040)
+fi
 echo "Configure audio websocket port '${PORT_AUDIO_WEBSOCKET:?}'"
 
 # Export config
@@ -121,6 +123,7 @@ cat << EOF > "${WEB_ROOT:?}/web/config.js"
 export default {
     REMOTE_HOST: "${REMOTE_HOST:?}",
     PORT_AUDIO_WEBSOCKET: "${PORT_AUDIO_WEBSOCKET:?}"
+    DOMAIN_AUDIO_WEBSOCKET: "${DOMAIN_AUDIO_WEBSOCKET:?}"
 };
 EOF
 
