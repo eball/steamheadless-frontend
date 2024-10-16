@@ -122,7 +122,7 @@ echo "Configure audio websocket port '${PORT_AUDIO_WEBSOCKET:?}'"
 cat << EOF > "${WEB_ROOT:?}/web/config.js"
 export default {
     REMOTE_HOST: "${REMOTE_HOST:?}",
-    PORT_AUDIO_WEBSOCKET: "${PORT_AUDIO_WEBSOCKET:?}"
+    PORT_AUDIO_WEBSOCKET: "${PORT_AUDIO_WEBSOCKET:?}",
     DOMAIN_AUDIO_WEBSOCKET: "${DOMAIN_AUDIO_WEBSOCKET:?}"
 };
 EOF
