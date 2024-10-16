@@ -1153,6 +1153,7 @@ const UI = {
         let port = jsonConfig.PORT_AUDIO_WEBSOCKET;
         if (window.location.protocol === "https:") {
             audio_url = 'wss';
+            port = "443";
         } else {
             audio_url = 'ws';
         }
